@@ -200,8 +200,28 @@ VALUES
 2,
 38.5,
 'Pizza com borda recheada de catupiry e refrigerante sabor guaraná'),
+(1,
+3,
+2,
+38.5,
+'Pizza com borda recheada de catupiry e refrigerante sabor guaraná'),
+(1,
+5,
+2,
+38.5,
+'Pizza com borda recheada de catupiry e refrigerante sabor guaraná'),
 (2,
 2,
+3,
+48.55,
+'Pizza meio a meio: calabresa com cebola e portuguesa com ovo, borda recheada com cheddar e refrigerante sabor cola'),
+(2,
+5,
+3,
+48.55,
+'Pizza meio a meio: calabresa com cebola e portuguesa com ovo, borda recheada com cheddar e refrigerante sabor cola'),
+(2,
+1,
 3,
 48.55,
 'Pizza meio a meio: calabresa com cebola e portuguesa com ovo, borda recheada com cheddar e refrigerante sabor cola'),
@@ -265,7 +285,11 @@ JOIN pizza_ingredientes AS pi ON pi.pizza_id = p.id
 JOIN ingredientes AS i ON pi.ingrediente_id = i.id
 JOIN usuarios AS u ON o.usuario_id = u.id
 
-GROUP BY o.id;
+GROUP BY p.nome,
+o.data,
+u.nome,
+u.email,
+u.senha;
 
 
 
