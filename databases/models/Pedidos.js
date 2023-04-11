@@ -1,53 +1,56 @@
 module.exports = (sequelize, DataTypes) => {
 
     const Pedidos = sequelize.define(
-        'Pedidos', //nome da model
-        {           // objeto descrevendo as colunas da tabela q esta sendo representada
-            id: {
+        'Pedidos', // nome da model
+        
+        {          // objeto descrevendo as colunas da tabela que está sendo representada
+            id:{
                 type: DataTypes.INTEGER,
-                primaryKey: true,
                 autoIncrement: true,
+                primaryKey: true,
                 allowNull: false
             },
-            usuario_id: {
+            usuario_id:{
                 type: DataTypes.INTEGER,
                 allowNull: false
             },
-            obs: {
+            obs:{
                 type: DataTypes.TEXT,
                 allowNull: true
             },
-            total: {
+            total:{
                 type: DataTypes.DECIMAL(10,2),
                 allowNull: false
             },
-            data: {
+            data:{
                 type: DataTypes.DATE,
                 allowNull: false
             },
-            forma_pagamento_id: {
+            forma_pagamento_id:{
                 type: DataTypes.INTEGER,
                 allowNull: false
             }
         },
-        {               //objeto carregando algumas características
-            tablestamps: 'pedidos',
+
+        {          // objeto carregando algumas peculiaridades
+            tableName: 'pedidos',
             timestamps: false
         }
-    )
+    );
 
     Pedidos.associate = (models) => {
         Pedidos.belongsToMany(
             models.Pizzas,
             {
-                as:'pizzas',
-                through: 'pedido_pizza',
-                foreignKey: 'pedido_id',
-                otherKey: 'pizza_id',
+                as: "pizzas",
+                through: "pedido_pizza",
+                foreignKey: "pedido_id",
+                otherKey: "pizza_id",
                 timestamps: false
             }
         )
     }
 
-    return Pedidos
+    return Pedidos;
+
 }
